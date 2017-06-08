@@ -7,6 +7,6 @@
     <string name="str_internet_unreachable">Internet connection unavailable.Cannot search</string>
     <string name="str_network_broadcast_receiver_label">NetworkBroadCastReceiver</string>
 
-    <string name="consumer_key">dqbVwiK3o0lmQ6SvKI07fxS9Y</string>
-    <string name="consumer_secret">0iXnspMwl3vszIGxpnpfbOZcTbRENHWgJHGiur5M8WzXDfAsrB</string>
+    <string name="consumer_key">YOUR-CONSUMER-KEY</string>
+    <string name="consumer_secret">YOUR-CONSUMER-SECRET</string>
 </resources>
