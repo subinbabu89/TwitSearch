@@ -47,11 +47,13 @@ class MainPresenterImpl implements MainPresenter, Observer {
             @Override
             public void success(Result<Search> searchResult) {
                 final List<Tweet> tweets = searchResult.data.tweets;
+                mainView.clearAPIError();
                 mainView.setItems(tweets);
             }
 
             @Override
             public void failure(TwitterException error) {
+                mainView.showAPIError();
             }
         });
     }

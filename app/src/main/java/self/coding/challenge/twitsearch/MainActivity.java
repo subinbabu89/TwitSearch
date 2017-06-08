@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.twitter.sdk.android.core.models.Tweet;
@@ -36,9 +37,9 @@ public class MainActivity extends AppCompatActivity implements MainView, MainPre
 
     private MainPresenter presenter;
     private ProgressBar progressBar;
-
-    private boolean hasInternetPermission;
     private Snackbar snackbar;
+
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements MainView, MainPre
         setContentView(R.layout.activity_main);
 
         progressBar = (ProgressBar) findViewById(R.id.progress);
+        textView = (TextView)findViewById(R.id.txtv_message);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         this.setSupportActionBar(mToolbar);
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements MainView, MainPre
 
             @Override
             public void onSearch(String string) {
-                if (hasInternetPermission) {
+                if (NetworkUtil.getConnectivityStatus(MainActivity.this)) {
                     onSearchText(string);
                 } else {
                     Toast.makeText(MainActivity.this, R.string.str_internet_unreachable, Toast.LENGTH_SHORT).show();
@@ -132,6 +134,18 @@ public class MainActivity extends AppCompatActivity implements MainView, MainPre
             }
 
         });
+    }
+
+    @Override
+    public void showAPIError() {
+        mRecyclerView.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
+        textView.setText(R.string.str_api_error_message);
+    }
+
+    @Override
+    public void clearAPIError(){
+        textView.setText(R.string.search_results_placeholder);
     }
 
     @Override
@@ -191,7 +205,6 @@ public class MainActivity extends AppCompatActivity implements MainView, MainPre
 
     @Override
     public void showSnackbar() {
-        hasInternetPermission = false;
         if (snackbar == null || !snackbar.isShown()) {
             snackbar = Snackbar.make(mRecyclerView, R.string.str_internet_unavailable, Snackbar.LENGTH_INDEFINITE)
                     .setAction(getResources().getText(android.R.string.ok), null);
@@ -201,7 +214,6 @@ public class MainActivity extends AppCompatActivity implements MainView, MainPre
 
     @Override
     public void dismissSnackBar() {
-        hasInternetPermission = true;
         if (snackbar != null && snackbar.isShown()) {
             snackbar.dismiss();
         }

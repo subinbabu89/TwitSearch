@@ -6,7 +6,8 @@
     <string name="str_internet_unavailable">Internet connection is not available</string>
     <string name="str_internet_unreachable">Internet connection unavailable.Cannot search</string>
     <string name="str_network_broadcast_receiver_label">NetworkBroadCastReceiver</string>
+    <string name="str_api_error_message">Some API error occured for the searched string Please use some other string</string>
 
-    <string name="consumer_key">YOUR-CONSUMER-KEY</string>
-    <string name="consumer_secret">YOUR-CONSUMER-SECRET</string>
+    <string name="consumer_key">YOUR_CONSUMER_KEY</string>
+    <string name="consumer_secret">YOUR_CONSUMER_SECRET</string>
 </resources>
