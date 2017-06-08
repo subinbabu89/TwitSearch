@@ -9,18 +9,16 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterConfig;
 
 /**
- * Created by subin on 6/6/2017.
+ * Custom Application class needed to initialize the twitter API for the application
  */
-
 public class TwitSearchApp extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
-//        Twitter.initialize(this);
         TwitterConfig config = new TwitterConfig.Builder(this)
                 .logger(new DefaultLogger(Log.DEBUG))
-                .twitterAuthConfig(new TwitterAuthConfig("dqbVwiK3o0lmQ6SvKI07fxS9Y", "0iXnspMwl3vszIGxpnpfbOZcTbRENHWgJHGiur5M8WzXDfAsrB"))
+                .twitterAuthConfig(new TwitterAuthConfig(getResources().getString(R.string.consumer_key), getResources().getString(R.string.consumer_secret)))
                 .debug(true)
                 .build();
         Twitter.initialize(config);

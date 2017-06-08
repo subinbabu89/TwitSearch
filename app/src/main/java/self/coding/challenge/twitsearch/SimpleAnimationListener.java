@@ -3,10 +3,9 @@ package self.coding.challenge.twitsearch;
 import android.animation.Animator;
 
 /**
- * Created by subin on 6/7/2017.
+ * Custom animation listener for the search bar
  */
-
-public class SimpleAnimationListener implements Animator.AnimatorListener {
+class SimpleAnimationListener implements Animator.AnimatorListener {
 
     @Override
     public void onAnimationStart(Animator animation) {

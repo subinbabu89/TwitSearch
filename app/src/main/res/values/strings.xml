@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">TwitSearch</string>
+    <string name="str_search">Search</string>
+    <string name="search_results_placeholder">Your search results show up here</string>
+    <string name="permission_internet_rationale">Internet permission is required to fetch tweets.</string>
+    <string name="str_internet_unavailable">Internet connection is not available</string>
+    <string name="str_internet_unreachable">Internet connection unavailable.Cannot search</string>
+    <string name="str_network_broadcast_receiver_label">NetworkBroadCastReceiver</string>
+
+    <string name="consumer_key">dqbVwiK3o0lmQ6SvKI07fxS9Y</string>
+    <string name="consumer_secret">0iXnspMwl3vszIGxpnpfbOZcTbRENHWgJHGiur5M8WzXDfAsrB</string>
 </resources>

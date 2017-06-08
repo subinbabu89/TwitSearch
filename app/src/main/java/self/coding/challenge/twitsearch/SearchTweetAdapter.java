@@ -1,11 +1,11 @@
 package self.coding.challenge.twitsearch;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.twitter.sdk.android.core.models.Tweet;
 import com.twitter.sdk.android.tweetui.CompactTweetView;
@@ -14,30 +14,33 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by subin on 6/6/2017.
+ * Adapter for the recyclerview in the main activity
  */
-
-public class SearchTweetAdapter extends RecyclerView.Adapter<SearchTweetAdapter.ViewHolder> {
+class SearchTweetAdapter extends RecyclerView.Adapter<SearchTweetAdapter.ViewHolder> {
 
     private List<Tweet> tweets;
     private Context context;
 
-    public SearchTweetAdapter(List<Tweet> tweets) {
+    /**
+     * Constructor for the adapter
+     *
+     * @param tweets List of tweets received from the service
+     */
+    SearchTweetAdapter(List<Tweet> tweets) {
         this.tweets = tweets;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
-        LinearLayout tweetView = (LinearLayout) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_tweet_activity, parent, false);
-        ViewHolder viewHolder =new ViewHolder(tweetView);
-        return viewHolder;
+        CardView tweetView = (CardView) LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_tweet, parent, false);
+        return new ViewHolder(tweetView);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.linearLayout.addView(new CompactTweetView(context,tweets.get(position)));
+        holder.cardView.addView(new CompactTweetView(context, tweets.get(position)));
     }
 
     @Override
@@ -45,21 +48,38 @@ public class SearchTweetAdapter extends RecyclerView.Adapter<SearchTweetAdapter.
         return tweets.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public LinearLayout linearLayout;
-        public ViewHolder(View itemView) {
+    /**
+     * Viewholder class for the adapter views
+     */
+    class ViewHolder extends RecyclerView.ViewHolder {
+        CardView cardView;
+
+        /**
+         * Constructor for the viewholder
+         *
+         * @param itemView view to be used for the adapterviews
+         */
+        ViewHolder(View itemView) {
             super(itemView);
-            linearLayout = (LinearLayout)itemView;
+            cardView = (CardView) itemView;
         }
     }
 
-    public void addAll(Collection<Tweet> items) {
+    /**
+     * Method used to add new items to the list
+     *
+     * @param items List of tweets to be added
+     */
+    void addAll(Collection<Tweet> items) {
         int currentItemCount = tweets.size();
         tweets.addAll(items);
         notifyItemRangeInserted(currentItemCount, items.size());
     }
 
-    public void clear() {
+    /**
+     * Method used to clear existing data for the adapter
+     */
+    void clear() {
         int itemCount = tweets.size();
         tweets.clear();
         notifyItemRangeRemoved(0, itemCount);

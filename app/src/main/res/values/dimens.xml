@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tweet_card_corner_radius">4dp</dimen>
+    <dimen name="tweet_card_margin">8dp</dimen>
+    <dimen name="recycler_padding_top">64dp</dimen>
+    <dimen name="persistentSearch_toolbar_height">56dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="persistentSearch_elevation">6dp</dimen>
+    <dimen name="view_elevation">6dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="recycler_elevation">2dp</dimen>
+    <dimen name="progress_margin">12dp</dimen>
+</resources>
